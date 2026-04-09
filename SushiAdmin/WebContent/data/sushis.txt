@@ -1,0 +1,15 @@
+1;Salmon Nigiri;Saumon frais premium sur riz vinaigre, touche de wasabi artisanal;8.5;nigiri;https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=400
+2;Thon Rouge Nigiri;Thon rouge selection du chef sur riz assaisonne;9.0;nigiri;https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=400
+3;Crevette Nigiri;Crevette cuite delicatement posee sur riz parfume;7.5;nigiri;https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=400
+4;California Roll;Crabe, avocat, concombre enroule de riz et sesame;12.0;maki;https://images.unsplash.com/photo-1559410545-0bdcd187e0a6?w=400
+5;Dragon Roll;Crevette tempura, avocat, sauce epicee maison;16.5;maki;https://images.unsplash.com/photo-1617196034183-421b4917c92d?w=400
+6;Spicy Tuna Roll;Thon epice, concombre, oignon croquant;14.0;maki;https://images.unsplash.com/photo-1553621042-f6e147245754?w=400
+7;Sashimi Saumon;6 tranches de saumon frais coupe a la perfection;13.5;sashimi;https://images.unsplash.com/photo-1534482421-64566f976cfa?w=400
+8;Sashimi Mixte;Assortiment de poissons frais du jour;18.0;sashimi;https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=400
+9;Edamame;Feves de soja chaudes legerement salees;5.0;accompagnement;https://images.unsplash.com/photo-1564093497595-593b96d80571?w=400
+10;Gyoza;6 raviolis japonais grilles au porc et legumes;8.0;accompagnement;https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=400
+11;Tempura Crevettes;4 crevettes en beignet leger et croustillant;11.0;accompagnement;https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=400
+12;Miso Soup;Soupe traditionnelle au tofu, algues wakame;4.5;accompagnement;https://images.unsplash.com/photo-1607301406259-dfb186e15de8?w=400
+13;Plateau Decouverte;18 pieces variees pour 2 personnes;28.0;plateau;https://images.unsplash.com/photo-1583623025817-d180a2221d0a?w=400
+14;Plateau Imperial;32 pieces premium, selection du chef;45.0;plateau;https://images.unsplash.com/photo-1562802378-063ec186a863?w=400
+15;Matcha Tiramisu;Dessert fusion tiramisu au the vert matcha;7.5;dessert;https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400

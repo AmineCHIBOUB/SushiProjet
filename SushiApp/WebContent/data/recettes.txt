@@ -1,0 +1,5 @@
+1;California Roll Maison;riz a sushi, vinaigre de riz, crabe, avocat, concombre, sesame, nori;Cuire le riz et assaisonner. Etaler sur nori, ajouter garniture, rouler serrer et couper en 8
+2;Saumon Nigiri;riz a sushi, saumon frais, wasabi, vinaigre de riz;Former des boulettes de riz ovales, deposer une pointe de wasabi et le saumon tranche finement
+3;Miso Soup Traditionnelle;pate miso blanc, tofu soyeux, algues wakame, oignon vert, dashi;Chauffer le dashi, dissoudre le miso, ajouter tofu et algues, servir chaud
+4;Gyoza Porc Legumes;pate a gyoza, porc hache, chou, gingembre, ail, sauce soja, huile sesame;Melanger la farce, garnir les pates, plier en demi-lune, griller puis cuire a la vapeur
+5;Dragon Roll Special;crevette tempura, avocat, concombre, sauce epicee, tobiko, nori, riz;Rouler la crevette tempura dans le riz, couvrir d avocat tranche, napper de sauce

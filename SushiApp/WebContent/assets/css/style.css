@@ -1,0 +1,987 @@
+/* ===============================================================
+   SushiApp - Feuille de style principale
+   Theme : luxe sombre et or pour un restaurant japonais haut de gamme
+   =============================================================== */
+
+/* ---- Variables CSS globales ---- */
+:root {
+  --gold:    #d4a853;
+  --gold-lt: #e8c47a;
+  --gold-dk: #b8883a;
+  --bg:      #0a0a0a;
+  --bg2:     #0d0d0d;
+  --bg3:     #111111;
+  --bg4:     #161616;
+  --border:  #222222;
+  --text:    #ffffff;
+  --muted:   #888888;
+  --muted2:  #555555;
+  --danger:  #c0392b;
+  --success: #27ae60;
+}
+
+/* ---- Reset de base ---- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+/* ---- Scrollbar personalise ---- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg2);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold-dk);
+  border-radius: 3px;
+}
+
+/* ---- Liens ---- */
+a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: var(--gold-lt);
+}
+
+/* ================================================================
+   NAVBAR
+   ================================================================ */
+.sushi-navbar {
+  background-color: rgba(10, 10, 10, 0.97);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  /* ombre subtile en bas */
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+}
+
+/* logo dans la navbar */
+.sushi-navbar .navbar-brand {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: 4px;
+  color: var(--gold) !important;
+  text-transform: uppercase;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.sushi-navbar .navbar-brand span {
+  color: var(--text);
+  font-weight: 300;
+}
+
+/* liens de navigation */
+.sushi-navbar .nav-link {
+  color: var(--muted) !important;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 1.5rem 1rem !important;
+  transition: color 0.2s;
+  font-weight: 500;
+}
+
+.sushi-navbar .nav-link:hover,
+.sushi-navbar .nav-link.active {
+  color: var(--gold) !important;
+}
+
+/* ligne or sous le lien actif */
+.sushi-navbar .nav-link.active::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background: var(--gold);
+  margin-top: -2px;
+}
+
+/* bouton toggler mobile */
+.sushi-navbar .navbar-toggler {
+  border-color: var(--border);
+}
+.sushi-navbar .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+/* ================================================================
+   SECTION HERO
+   ================================================================ */
+.hero-section {
+  /* fond sombre dramatique */
+  background: linear-gradient(135deg, #000000 0%, #0d0d0d 50%, #111111 100%);
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 2rem;
+}
+
+/* motif japonais en arriere-plan */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(212, 168, 83, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(212, 168, 83, 0.03) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+/* ligne decorative or en haut */
+.hero-section::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+/* etiquette au-dessus du titre */
+.hero-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(212, 168, 83, 0.3);
+  padding: 0.4rem 1.5rem;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+/* grand titre du hero */
+.hero-title {
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  font-weight: 900;
+  letter-spacing: -2px;
+  line-height: 0.9;
+  color: var(--text);
+  text-transform: uppercase;
+  font-family: Georgia, 'Times New Roman', serif;
+  margin-bottom: 1.5rem;
+}
+
+.hero-title .gold-word {
+  color: var(--gold);
+  font-style: italic;
+}
+
+/* ligne separatrice or */
+.hero-divider {
+  width: 80px;
+  height: 2px;
+  background: var(--gold);
+  margin: 1.5rem auto;
+}
+
+/* sous-titre du hero */
+.hero-subtitle {
+  font-size: 1rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 3rem;
+  font-weight: 300;
+}
+
+/* bouton principal (or plein) */
+.btn-gold {
+  background-color: var(--gold);
+  color: #000;
+  border: none;
+  padding: 1rem 2.5rem;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  transition: all 0.3s;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.btn-gold:hover {
+  background-color: var(--gold-lt);
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(212, 168, 83, 0.3);
+}
+
+/* bouton contour or */
+.btn-gold-outline {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 0.75rem 2rem;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: all 0.3s;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.btn-gold-outline:hover {
+  background-color: var(--gold);
+  color: #000;
+  transform: translateY(-2px);
+}
+
+/* ================================================================
+   SECTIONS GENERALES
+   ================================================================ */
+
+/* titre de section avec decoration or */
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--text);
+  font-family: Georgia, 'Times New Roman', serif;
+  position: relative;
+  display: inline-block;
+}
+
+.section-subtitle {
+  color: var(--muted);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+}
+
+/* ligne or sous le titre de section */
+.section-divider {
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  margin: 1rem auto 3rem;
+}
+
+/* ================================================================
+   SECTION MENU - CARTES SUSHIS
+   ================================================================ */
+.menu-section {
+  background-color: var(--bg2);
+  padding: 6rem 0;
+}
+
+/* carte d un sushi */
+.sushi-card {
+  background-color: var(--bg3);
+  border: 1px solid var(--border);
+  transition: all 0.35s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sushi-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 168, 83, 0.1);
+}
+
+/* image de la carte */
+.sushi-card .card-img-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+.sushi-card .card-img-wrap img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  display: block;
+}
+
+.sushi-card:hover .card-img-wrap img {
+  transform: scale(1.08);
+}
+
+/* etiquette de categorie */
+.sushi-card .category-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(0, 0, 0, 0.85);
+  color: var(--gold);
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid rgba(212, 168, 83, 0.3);
+  font-weight: 500;
+}
+
+/* corps de la carte */
+.sushi-card .card-body {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.sushi-card .card-title {
+  color: var(--text);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  font-family: Georgia, serif;
+}
+
+.sushi-card .card-desc {
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  flex: 1;
+  margin-bottom: 1rem;
+}
+
+/* prix en or */
+.sushi-card .price {
+  color: var(--gold);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.sushi-card .price::before {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 0.75rem;
+}
+
+/* ================================================================
+   SECTION LIVRAISON
+   ================================================================ */
+.livraison-section {
+  background-color: var(--bg);
+  padding: 5rem 0;
+}
+
+/* carte mode de livraison */
+.livraison-card {
+  background-color: var(--bg3);
+  border: 1px solid var(--border);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  transition: all 0.3s;
+  height: 100%;
+}
+
+.livraison-card:hover {
+  border-color: var(--gold);
+  background-color: var(--bg4);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* icone du mode de livraison */
+.livraison-card .liv-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.livraison-card .liv-nom {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  font-family: Georgia, serif;
+}
+
+.livraison-card .liv-tarif {
+  color: var(--gold);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.livraison-card .liv-type {
+  color: var(--muted);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ================================================================
+   FORMULAIRE DE COMMANDE
+   ================================================================ */
+.commande-section {
+  background-color: var(--bg);
+  padding: 5rem 0;
+}
+
+/* en-tete de la page commander */
+.page-header {
+  background: linear-gradient(135deg, var(--bg2), var(--bg3));
+  border-bottom: 1px solid var(--border);
+  padding: 4rem 0 3rem;
+  text-align: center;
+}
+
+/* champs de formulaire */
+.form-label {
+  color: var(--muted);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.form-control,
+.form-select {
+  background-color: var(--bg3) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  border-radius: 0 !important;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: var(--bg4) !important;
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 0 2px rgba(212, 168, 83, 0.15) !important;
+  color: var(--text) !important;
+  outline: none;
+}
+
+.form-control::placeholder {
+  color: var(--muted2);
+}
+
+/* groupes de radio pour la livraison */
+.form-check-input {
+  background-color: var(--bg3);
+  border-color: var(--border);
+  cursor: pointer;
+}
+
+.form-check-input:checked {
+  background-color: var(--gold);
+  border-color: var(--gold);
+}
+
+.form-check-label {
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* zone de sushi dans le formulaire de commande */
+.sushi-order-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  margin-bottom: 0.75rem;
+  transition: border-color 0.2s;
+}
+
+.sushi-order-item:hover {
+  border-color: var(--muted2);
+}
+
+.sushi-order-item img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.sushi-order-item .sushi-info {
+  flex: 1;
+}
+
+.sushi-order-item .sushi-info .nom {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+}
+
+.sushi-order-item .sushi-info .prix {
+  color: var(--gold);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+/* input quantite compact */
+.qte-input {
+  width: 70px;
+  text-align: center;
+  background-color: var(--bg4) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  padding: 0.5rem;
+  border-radius: 0 !important;
+  font-size: 0.9rem;
+}
+
+.qte-input:focus {
+  border-color: var(--gold) !important;
+  box-shadow: none !important;
+}
+
+/* panneau de resume de commande */
+.order-summary {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  position: sticky;
+  top: 80px;
+}
+
+.order-summary h4 {
+  color: var(--gold);
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.order-summary .info-ligne {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.order-summary .info-ligne span:first-child {
+  color: var(--muted);
+}
+
+.order-summary .info-ligne span:last-child {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ================================================================
+   TABLES (mes commandes, detail)
+   ================================================================ */
+.commandes-section {
+  background-color: var(--bg);
+  padding: 5rem 0;
+  min-height: 70vh;
+}
+
+/* tableau des commandes */
+.table-dark-custom {
+  color: var(--text);
+  border-color: var(--border);
+  width: 100%;
+}
+
+.table-dark-custom thead th {
+  background-color: var(--bg3);
+  color: var(--gold);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 1.25rem;
+  white-space: nowrap;
+}
+
+.table-dark-custom tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background-color 0.2s;
+}
+
+.table-dark-custom tbody tr:hover {
+  background-color: var(--bg3);
+}
+
+.table-dark-custom td {
+  padding: 1rem 1.25rem;
+  vertical-align: middle;
+  color: var(--muted);
+  font-size: 0.9rem;
+  border: none;
+}
+
+.table-dark-custom td strong {
+  color: var(--text);
+}
+
+/* ================================================================
+   BADGES DE STATUT
+   ================================================================ */
+.badge-statut {
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 0.35rem 0.75rem;
+  font-weight: 600;
+  border-radius: 0;
+}
+
+.badge-attente  { background-color: rgba(212, 168, 83, 0.15);  color: var(--gold);    border: 1px solid rgba(212, 168, 83, 0.3);  }
+.badge-prepare  { background-color: rgba(52, 152, 219, 0.15);  color: #3498db;        border: 1px solid rgba(52, 152, 219, 0.3);  }
+.badge-livre    { background-color: rgba(39, 174, 96, 0.15);   color: var(--success); border: 1px solid rgba(39, 174, 96, 0.3);   }
+.badge-annule   { background-color: rgba(192, 57, 43, 0.15);   color: var(--danger);  border: 1px solid rgba(192, 57, 43, 0.3);   }
+
+/* ================================================================
+   CARTES DE DETAIL
+   ================================================================ */
+.detail-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.detail-card .detail-label {
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.detail-card .detail-value {
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* image miniature dans le detail commande */
+.detail-sushi-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+
+/* ligne de total */
+.total-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  background: rgba(212, 168, 83, 0.05);
+  border: 1px solid rgba(212, 168, 83, 0.2);
+  margin-top: 1rem;
+}
+
+.total-line .label {
+  color: var(--muted);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.total-line .montant {
+  color: var(--gold);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* ================================================================
+   FOOTER
+   ================================================================ */
+.sushi-footer {
+  background-color: var(--bg2);
+  border-top: 1px solid var(--border);
+  padding: 3rem 0 2rem;
+  text-align: center;
+}
+
+.sushi-footer .footer-brand {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  font-family: Georgia, serif;
+  margin-bottom: 0.75rem;
+}
+
+.sushi-footer .footer-copy {
+  color: var(--muted2);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.sushi-footer .footer-divider {
+  width: 40px;
+  height: 1px;
+  background: var(--border);
+  margin: 1rem auto;
+}
+
+/* ================================================================
+   MESSAGES D ALERTE ET D INFO
+   ================================================================ */
+.alert-dark-custom {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  border-radius: 0;
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+/* ================================================================
+   UTILITAIRES
+   ================================================================ */
+.text-gold   { color: var(--gold) !important; }
+.text-muted2 { color: var(--muted) !important; }
+.bg-dark2    { background-color: var(--bg2); }
+.bg-dark3    { background-color: var(--bg3); }
+.border-dark-custom { border-color: var(--border) !important; }
+
+/* espacements supplementaires */
+.py-section { padding-top: 5rem; padding-bottom: 5rem; }
+
+/* ligne separatrice or inline */
+.gold-line {
+  display: inline-block;
+  width: 40px;
+  height: 2px;
+  background: var(--gold);
+  vertical-align: middle;
+  margin: 0 0.75rem;
+}
+
+/* ================================================================
+   RESPONSIVE MOBILE
+   ================================================================ */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 3.5rem;
+    letter-spacing: -1px;
+  }
+
+  .hero-section {
+    min-height: 75vh;
+    padding: 3rem 1rem;
+  }
+
+  .sushi-order-item {
+    flex-wrap: wrap;
+  }
+
+  .order-summary {
+    position: static;
+    margin-top: 2rem;
+  }
+
+  .detail-card {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-title {
+    font-size: 2.8rem;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .sushi-navbar .navbar-brand {
+    font-size: 1.2rem;
+  }
+}
+
+/* ============================================================
+   FILTRES PAR CATEGORIE (fonctionnalite innovante)
+   ============================================================ */
+
+.btn-filtre {
+  background: transparent;
+  border: 1px solid #333;
+  color: #888;
+  padding: 8px 20px;
+  margin: 4px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-filtre:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.btn-filtre.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #000;
+  font-weight: 600;
+}
+
+/* ============================================================
+   RESERVATION DE TABLE
+   ============================================================ */
+
+.reservation-section {
+  background: var(--bg-dark, #0a0a0a);
+  min-height: 80vh;
+}
+
+.reservation-card {
+  background: #111;
+  border: 1px solid #222;
+  padding: 40px;
+}
+
+.form-group-dark { margin-bottom: 16px; }
+
+.form-label-dark {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #888;
+  text-transform: uppercase;
+  font-family: Arial, sans-serif;
+  margin-bottom: 8px;
+}
+
+.form-input-dark {
+  width: 100%;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  color: #fff;
+  padding: 14px 16px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.form-input-dark:focus {
+  border-color: var(--gold);
+}
+.form-input-dark option {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.link-gold {
+  color: var(--gold);
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+}
+.link-gold:hover {
+  color: #fff;
+}
+
+.alert-confirmation {
+  background: rgba(212, 168, 83, 0.1);
+  border: 1px solid rgba(212, 168, 83, 0.3);
+  color: var(--gold);
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+/* carte mini pour la liste des reservations */
+.reservation-card-mini {
+  background: #111;
+  border: 1px solid #222;
+  padding: 24px;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+.reservation-card-mini:hover {
+  border-color: var(--gold);
+}
+
+.resa-date {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.resa-client {
+  font-size: 16px;
+  color: #fff;
+  font-family: Georgia, serif;
+  margin-bottom: 6px;
+}
+.resa-details {
+  font-size: 12px;
+  color: #666;
+  font-family: Arial, sans-serif;
+  margin-bottom: 12px;
+}
+.resa-statut { margin-top: 8px; }
+
+.badge-statut {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  font-family: Arial, sans-serif;
+  font-weight: 600;
+}
+.badge-attente {
+  background: rgba(212, 168, 83, 0.15);
+  color: var(--gold);
+  border: 1px solid rgba(212, 168, 83, 0.3);
+}
+.badge-confirme {
+  background: rgba(92, 184, 92, 0.15);
+  color: #5cb85c;
+  border: 1px solid rgba(92, 184, 92, 0.3);
+}
+
+/* icones SVG livraison */
+.liv-icon svg {
+  color: var(--gold);
+}
