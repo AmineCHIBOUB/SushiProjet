@@ -63,6 +63,14 @@
             Formulaire principal : action vers CommandeServlet en POST
             le champ hidden "action" vaut "passer" pour identifier le traitement
         -->
+        <%-- message si une quantite demandee depasse le stock disponible --%>
+        <c:if test="${param.erreur == 'stock'}">
+            <div class="alert alert-danger mb-4">
+                Stock insuffisant pour « <c:out value="${param.plat}"/> ».
+                Merci d'ajuster la quantité.
+            </div>
+        </c:if>
+
         <form action="${pageContext.request.contextPath}/commandes" method="post" id="formCommande">
             <!-- champ cache pour indiquer l action au servlet -->
             <input type="hidden" name="action" value="passer">
@@ -167,6 +175,13 @@
                                     <small style="color:var(--muted2);font-size:0.75rem;">
                                         <c:out value="${s.value.categorie}"/>
                                     </small>
+                                    <%-- disponibilite selon le stock --%>
+                                    <c:if test="${s.value.enRupture}">
+                                        <span class="badge bg-danger ms-2">Rupture</span>
+                                    </c:if>
+                                    <c:if test="${s.value.stockBas}">
+                                        <span class="badge bg-warning text-dark ms-2">Plus que <c:out value="${s.value.stock}"/></span>
+                                    </c:if>
                                 </div>
 
                                 <!-- input quantite : nom = "qte_<idSushi>" pour le servlet -->
@@ -175,7 +190,8 @@
                                        name="qte_<c:out value='${s.value.id}'/>"
                                        value="0"
                                        min="0"
-                                       max="99"
+                                       max="<c:out value='${s.value.stock < 99 ? s.value.stock : 99}'/>"
+                                       <c:if test="${s.value.enRupture}">disabled</c:if>
                                        title="Quantite de <c:out value='${s.value.nom}'/>">
                             </div>
                         </c:forEach>

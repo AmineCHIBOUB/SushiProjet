@@ -26,7 +26,9 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="sushis">SushiAdmin</a>
     <div>
+      <a href="tableau-de-bord" class="btn btn-outline-warning btn-sm me-2">TABLEAU DE BORD</a>
       <a href="sushis" class="btn btn-outline-light btn-sm me-2">SUSHIS</a>
+      <a href="stocks" class="btn btn-outline-light btn-sm me-2">STOCKS</a>
       <a href="recettes" class="btn btn-outline-light btn-sm me-2">RECETTES</a>
       <a href="livraisons" class="btn btn-outline-light btn-sm me-2">LIVRAISONS</a>
       <a href="commandes" class="btn btn-outline-warning btn-sm me-2">COMMANDES</a>

@@ -59,11 +59,17 @@
                         <p class="section-subtitle">Detail de la commande</p>
                         <h1 class="section-title">COMMANDE #<c:out value="${commande.id}"/></h1>
                     </div>
-                    <!-- bouton retour vers la liste -->
-                    <a href="${pageContext.request.contextPath}/commandes?action=liste"
-                       class="btn-gold-outline">
-                        &larr; Retour aux commandes
-                    </a>
+                    <!-- facture et retour vers la liste -->
+                    <div class="d-flex gap-2">
+                        <a href="${pageContext.request.contextPath}/commandes?action=facture&id=<c:out value='${commande.id}'/>"
+                           class="btn-gold">
+                            Facture
+                        </a>
+                        <a href="${pageContext.request.contextPath}/commandes?action=liste"
+                           class="btn-gold-outline">
+                            &larr; Retour aux commandes
+                        </a>
+                    </div>
                 </div>
 
                 <div class="row g-4">

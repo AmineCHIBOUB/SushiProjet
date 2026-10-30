@@ -19,7 +19,9 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="sushis">SushiAdmin</a>
     <div>
+      <a href="tableau-de-bord" class="btn btn-outline-warning btn-sm me-2">TABLEAU DE BORD</a>
       <a href="sushis" class="btn btn-outline-light btn-sm me-2">SUSHIS</a>
+      <a href="stocks" class="btn btn-outline-light btn-sm me-2">STOCKS</a>
       <a href="recettes" class="btn btn-outline-light btn-sm me-2">RECETTES</a>
       <a href="livraisons" class="btn btn-outline-light btn-sm me-2">LIVRAISONS</a>
       <a href="commandes" class="btn btn-outline-warning btn-sm me-2">COMMANDES</a>
@@ -107,7 +109,9 @@
             <a href="commandes?action=changerStatut&id=<jsp:getProperty name='commande' property='id'/>&statut=en+preparation"
                class="btn btn-primary btn-sm me-2">En preparation</a>
             <a href="commandes?action=changerStatut&id=<jsp:getProperty name='commande' property='id'/>&statut=livree"
-               class="btn btn-success btn-sm">Livree</a>
+               class="btn btn-success btn-sm me-2">Livree</a>
+               <a href="commandes?action=changerStatut&id=<jsp:getProperty name='commande' property='id'/>&statut=annulee" class="btn btn-danger btn-sm me-2" onclick="return confirm('Annuler cette commande ? Les plats seront remis en stock.')">Annuler</a>
+               <a href="commandes?action=facture&id=<jsp:getProperty name='commande' property='id'/>" class="btn btn-outline-light btn-sm">Facture</a>
         </div>
     </div>
 

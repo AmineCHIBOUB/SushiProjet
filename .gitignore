@@ -1,0 +1,12 @@
+# Fichiers compilés par Eclipse
+build/
+bin/
+*.class
+
+# Données générées à l'exécution
+commandes.txt
+reservations.txt
+
+# Système
+.DS_Store
+Thumbs.db

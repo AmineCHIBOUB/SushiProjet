@@ -19,7 +19,9 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="sushis">SushiAdmin</a>
     <div>
+      <a href="tableau-de-bord" class="btn btn-outline-warning btn-sm me-2">TABLEAU DE BORD</a>
       <a href="sushis" class="btn btn-outline-light btn-sm me-2">SUSHIS</a>
+      <a href="stocks" class="btn btn-outline-light btn-sm me-2">STOCKS</a>
       <a href="recettes" class="btn btn-outline-light btn-sm me-2">RECETTES</a>
       <a href="livraisons" class="btn btn-outline-light btn-sm me-2">LIVRAISONS</a>
       <a href="commandes" class="btn btn-outline-warning btn-sm me-2">COMMANDES</a>
@@ -37,6 +39,7 @@
             <tr>
                 <th>#</th>
                 <th>Client</th>
+                <th>Date</th>
                 <th>Adresse</th>
                 <th>Statut</th>
                 <th>Total</th>
@@ -49,6 +52,7 @@
                 <tr>
                     <td><%= i++ %></td>
                     <td><c:out value="${c.value.client}"/></td>
+                    <td><c:out value="${c.value.date}"/></td>
                     <td><c:out value="${c.value.adresse}"/></td>
                     <td>
                         <!-- Badge de statut : la couleur est geree en CSS via le theme -->
@@ -63,6 +67,7 @@
                         <a href="commandes?action=changerStatut&id=<c:out value='${c.value.id}'/>&statut=livree" class="btn btn-success btn-sm me-1">Livree</a>
                         <!-- Detail et suppression -->
                         <a href="commandes?action=detail&id=<c:out value='${c.value.id}'/>" class="btn btn-warning btn-sm me-1">Detail</a>
+                        <a href="commandes?action=facture&id=<c:out value='${c.value.id}'/>" class="btn btn-outline-light btn-sm me-1">Facture</a>
                         <a href="commandes?action=supprimer&id=<c:out value='${c.value.id}'/>" class="btn btn-secondary btn-sm">Supprimer</a>
                     </td>
                 </tr>

@@ -1,6 +1,9 @@
 package web;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Enumeration;
 import java.util.HashMap;
 
@@ -21,6 +24,9 @@ import metier.Sushi;
 @WebServlet("/commandes")
 public class CommandeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
+	// format de la date enregistree avec chaque commande
+	private static final DateTimeFormatter FORMAT_DATE = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
 	// traitement des requetes GET (liste ou detail)
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -75,6 +81,19 @@ public class CommandeServlet extends HttpServlet {
 
 			getServletConfig().getServletContext()
 				.getRequestDispatcher("/WEB-INF/jsp/detailCommande.jsp")
+				.forward(request, response);
+
+		// facture imprimable d une commande
+		} else if ("facture".equals(action)) {
+			int id = Integer.parseInt(request.getParameter("id"));
+			HashMap<Integer, Sushi>     hSushis     = FichierUtil.lireSushis();
+			HashMap<Integer, Livraison> hLivraisons = FichierUtil.lireLivraisons();
+			HashMap<Integer, Commande>  hCommandes  = FichierUtil.lireCommandes(hSushis, hLivraisons);
+
+			request.setAttribute("commande", hCommandes.get(id));
+
+			getServletConfig().getServletContext()
+				.getRequestDispatcher("/WEB-INF/jsp/facture.jsp")
 				.forward(request, response);
 		}
 	}
@@ -135,10 +154,28 @@ public class CommandeServlet extends HttpServlet {
 				}
 			}
 
+			// on verifie que le stock suffit pour chaque plat avant d enregistrer
+			for (CommandeLigne ligne : commande.getLignes()) {
+				Sushi sushi = ligne.getSushi();
+				if (ligne.getQuantite() > sushi.getStock()) {
+					response.sendRedirect(getServletContext().getContextPath()
+							+ "/sushis?action=commander&erreur=stock&plat="
+							+ URLEncoder.encode(sushi.getNom(), "UTF-8"));
+					return;
+				}
+			}
+
 			// on sauvegarde la commande seulement si elle contient au moins une ligne
 			if (!commande.getLignes().isEmpty()) {
+				commande.setDate(LocalDateTime.now().format(FORMAT_DATE));
 				hCommandes.put(commande.getId(), commande);
 				FichierUtil.ecrireCommandes(hCommandes);
+
+				// sortie de stock des plats commandes
+				for (CommandeLigne ligne : commande.getLignes()) {
+					ligne.getSushi().retirerStock(ligne.getQuantite());
+				}
+				FichierUtil.ecrireSushis(hSushis);
 			}
 
 			// redirection vers la liste des commandes apres confirmation

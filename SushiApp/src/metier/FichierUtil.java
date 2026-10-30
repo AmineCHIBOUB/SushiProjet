@@ -83,6 +83,9 @@ public class FichierUtil {
 					s.setCategorie(parts[4]);
 					// l image est optionnelle pour la compatibilite avec les anciens fichiers
 					s.setImage(parts.length > 5 ? parts[5] : "");
+					// stock et seuil d alerte optionnels (valeurs par defaut sinon)
+					if (parts.length > 6) s.setStock(Integer.parseInt(parts[6]));
+					if (parts.length > 7) s.setSeuilAlerte(Integer.parseInt(parts[7]));
 					hSushis.put(s.getId(), s);
 				}
 			}
@@ -98,8 +101,9 @@ public class FichierUtil {
 		try {
 			PrintWriter pw = new PrintWriter(new FileWriter(DOSSIER + "sushis.txt", false));
 			for (Sushi s : hSushis.values()) {
-				// on ecrit avec le champ image en plus
-				pw.println(s.getId() + ";" + s.getNom() + ";" + s.getDescription() + ";" + s.getPrix() + ";" + s.getCategorie() + ";" + s.getImage());
+				// format : id;nom;description;prix;categorie;image;stock;seuilAlerte
+				pw.println(s.getId() + ";" + s.getNom() + ";" + s.getDescription() + ";" + s.getPrix() + ";" + s.getCategorie() + ";" + s.getImage()
+						+ ";" + s.getStock() + ";" + s.getSeuilAlerte());
 			}
 			pw.close();
 		} catch (Exception e) {
@@ -205,7 +209,7 @@ public class FichierUtil {
 			String ligne;
 			while ((ligne = br.readLine()) != null) {
 				if (!ligne.trim().isEmpty()) {
-					// format : id;client;adresse;statut;idLivraison;idSushi1:qte1,...
+					// format : id;client;adresse;statut;idLivraison;idSushi1:qte1,...;date
 					String[] parts = ligne.split(";");
 					Commande c = new Commande();
 					c.setId(Integer.parseInt(parts[0]));
@@ -230,6 +234,8 @@ public class FichierUtil {
 							}
 						}
 					}
+					// la date est optionnelle pour les commandes passees avant son ajout
+					c.setDate(parts.length > 6 ? parts[6] : "");
 					hCommandes.put(c.getId(), c);
 				}
 			}
@@ -256,6 +262,7 @@ public class FichierUtil {
 					if (i > 0) sb.append(",");
 					sb.append(lignes.get(i).getSushi().getId()).append(":").append(lignes.get(i).getQuantite());
 				}
+				sb.append(";").append(c.getDate() != null ? c.getDate() : "");
 				pw.println(sb.toString());
 			}
 			pw.close();
